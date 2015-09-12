@@ -1,12 +1,9 @@
-﻿using Microsoft.AspNet.SignalR;
-using Microsoft.AspNet.SignalR.Hubs;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace RealTimeChart.Hubs
+﻿namespace RealTimeChart.Hubs
 {
+    using Microsoft.AspNet.SignalR;
+    using Microsoft.AspNet.SignalR.Hubs;
+    using System.Collections.Generic;
+
     [HubName("chartData")]
     public class ChartDataHub : Hub
     {

@@ -6,6 +6,8 @@ namespace RealTimeChart
 {
     public class Startup
     {
+        private IAppBuilder app;
+
         public void Configuration(IAppBuilder app)
         {
             app.MapSignalR();
