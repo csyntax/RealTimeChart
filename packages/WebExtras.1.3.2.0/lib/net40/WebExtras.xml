@@ -1,0 +1,2805 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>WebExtras</name>
+    </assembly>
+    <members>
+        <member name="T:WebExtras.Core.DateTimeExtensions">
+            <summary>
+            Date time extensions
+            </summary>
+        </member>
+        <member name="F:WebExtras.Core.DateTimeExtensions.DateTime1970Utc">
+            <summary>
+            static date of 1970-01-01 to use when converting DateTimes into javascript date objects (total ms since 1970-01-01 00:00:00 UTC)
+            </summary>
+        </member>
+        <member name="M:WebExtras.Core.DateTimeExtensions.ToJavaScriptDate(System.DateTime)">
+            <summary>    
+            Converts a .NET date to JavaScript ticks
+            </summary>
+            <param name="dt">The DateTime (used as local time) to convert</param>
+            <returns>A javascript date number (total ms since 1970-1-1 UTC)</returns>
+        </member>
+        <member name="M:WebExtras.Core.DateTimeExtensions.AsLocal(System.DateTime)">
+            <summary>
+            Returns current date time as a local date time
+            </summary>
+            <param name="dt">DateTime to be updated</param>
+            <returns>Updated date time</returns>
+        </member>
+        <member name="M:WebExtras.Core.DateTimeExtensions.AsUtc(System.DateTime)">
+            <summary>
+            Returns current date time as a UTC date time
+            </summary>
+            <param name="dt">DateTime to be updated</param>
+            <returns>Updated date time</returns>
+        </member>
+        <member name="T:WebExtras.Core.DoubleExtensions">
+            <summary>
+            Double extensions
+            </summary>
+        </member>
+        <member name="F:WebExtras.Core.DoubleExtensions.DateTime1970Utc">
+            <summary>
+            static date of 1970-01-01 to use when converting DateTimes into javascript date objects (total ms since 1970-01-01 00:00:00 UTC)
+            </summary>
+        </member>
+        <member name="M:WebExtras.Core.DoubleExtensions.ToDateTime(System.Double)">
+            <summary>
+            Converts given JavaScript ticks to a .NET date
+            </summary>
+            <param name="jsDate">A javascript date number (total ms since 1970-1-1 UTC) to covert</param>
+            <returns>DateTime object</returns>
+        </member>
+        <member name="T:WebExtras.Core.EnumExtentions">
+            <summary>
+            Enum extenstions
+            </summary>
+        </member>
+        <member name="M:WebExtras.Core.EnumExtentions.ToTitleCase(System.Enum)">
+            <summary>
+            Convert a given enum value to titlecase
+            </summary>
+            <param name="val">Enum value to be converted</param>
+            <returns>Titlecase converted value</returns>
+        </member>
+        <member name="M:WebExtras.Core.EnumExtentions.GetStringValue(System.Enum,System.Object)">
+            <summary>
+            Gets the Enum value's string value which is decorated by using
+            StringValue attribute
+            </summary>
+            <param name="value">Enum value to be checked</param>
+            <param name="sender">[Optional] The sender object to be sent to the 
+            WebExtras.Core.IStringValueDecider.Decide() in order to assist in deciding the value</param>
+            <returns>Associated string value, else null</returns>
+        </member>
+        <member name="T:WebExtras.Core.InvalidUsageException">
+            <summary>
+            Invalid usage exception
+            </summary>
+        </member>
+        <member name="M:WebExtras.Core.InvalidUsageException.#ctor(System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="message">Exception message</param>
+        </member>
+        <member name="M:WebExtras.Core.InvalidUsageException.#ctor(System.String,System.Exception)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="message">Exception message</param>
+            <param name="innerException">Inner exception</param>
+        </member>
+        <member name="T:WebExtras.Core.IStringValueDecider">
+            <summary>
+            A generic interface used to decide the StringValue of an enum value
+            at run time
+            </summary>
+        </member>
+        <member name="M:WebExtras.Core.IStringValueDecider.Decide(System.Object)">
+            <summary>
+            The string value decider function
+            </summary>
+            <param name="sender">[Optional] Sender object that can contain extra data
+            which can then be used to decide the value</param>
+            <returns>The string value to be used for the enum value</returns>
+        </member>
+        <member name="T:WebExtras.Core.JsFunc">
+            <summary>
+            Represents a Javascript function
+            </summary>
+        </member>
+        <member name="M:WebExtras.Core.JsFunc.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="P:WebExtras.Core.JsFunc.Name">
+            <summary>
+            Function name. Leave empty if you want an anonymous function
+            </summary>
+        </member>
+        <member name="P:WebExtras.Core.JsFunc.ParameterNames">
+            <summary>
+            An array of function parameter names
+            </summary>
+        </member>
+        <member name="P:WebExtras.Core.JsFunc.Body">
+            <summary>
+            Function body
+            </summary>
+        </member>
+        <member name="P:WebExtras.Core.JsFunc.OnDocumentReady">
+            <summary>
+            Flag indicating whether to surround the function with
+            a document.ready construct
+            </summary>
+        </member>
+        <member name="T:WebExtras.Core.JsFuncConverter">
+            <summary>
+            Custom JSON converter for JsFunc class
+            </summary>
+        </member>
+        <member name="M:WebExtras.Core.JsFuncConverter.CanConvert(System.Type)">
+            <summary>
+            Determines whether this instance can convert the specified object type
+            </summary>
+            <param name="objectType">Type of the object</param>
+            <returns>true if this instance can convert the specified object type; otherwise, false</returns>
+        </member>
+        <member name="M:WebExtras.Core.JsFuncConverter.ReadJson(Newtonsoft.Json.JsonReader,System.Type,System.Object,Newtonsoft.Json.JsonSerializer)">
+            <summary>
+            Reads the JSON representation of the object
+            </summary>
+            <param name="reader">The Newtonsoft.Json.JsonReader to read from</param>
+            <param name="objectType">Type of the object</param>
+            <param name="existingValue">The existing value of object being read</param>
+            <param name="serializer">The calling serializer</param>
+            <returns>The object value</returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:WebExtras.Core.JsFuncConverter.WriteJson(Newtonsoft.Json.JsonWriter,System.Object,Newtonsoft.Json.JsonSerializer)">
+            <summary>
+            Writes the JSON representation of the object
+            </summary>
+            <param name="writer">The Newtonsoft.Json.JsonWriter to write to</param>
+            <param name="value">The Newtonsoft.Json.JsonWriter to write to</param>
+            <param name="serializer">The Newtonsoft.Json.JsonWriter to write to</param>
+        </member>
+        <member name="T:WebExtras.Core.NameValueCollectionExtensions">
+            <summary>
+            Name value collection extensions
+            </summary>
+        </member>
+        <member name="M:WebExtras.Core.NameValueCollectionExtensions.ToDictionary(System.Collections.Specialized.NameValueCollection)">
+            <summary>
+            Converts the current name-value collection a dictionary
+            </summary>
+            <param name="collection">Current name-value collection</param>
+            <returns>A dictionary of the current name-value collection</returns>
+        </member>
+        <member name="T:WebExtras.Core.ObjectExtensions">
+            <summary>
+            Reference Article http://www.codeproject.com/KB/tips/SerializedObjectCloner.aspx
+            Provides a method for performing a deep copy of an object.
+            Binary Serialization is used to perform the copy.
+            </summary>
+        </member>
+        <member name="M:WebExtras.Core.ObjectExtensions.DeepClone``1(``0)">
+            <summary>
+            Perform a deep Copy of the object. Note that the object to be cloned
+            must be seriablizable i.e it and all it's children must be decorated
+            the the [Serialize] decorator
+            </summary>
+            <typeparam name="T">The type of object being copied.</typeparam>
+            <param name="source">The object instance to copy.</param>
+            <returns>The copied object.</returns>
+        </member>
+        <member name="M:WebExtras.Core.ObjectExtensions.ToJson(System.Object)">
+            <summary>
+            Convert current object to it's JSON representation
+            </summary>
+            <param name="source">Current object</param>
+            <returns>JSON object</returns>
+        </member>
+        <member name="T:WebExtras.Core.WebExtrasConstants">
+            <summary>
+            WebExtras library constants
+            </summary>
+        </member>
+        <member name="F:WebExtras.Core.WebExtrasConstants.JsonSerializerSettings">
+            <summary>
+            Json.NET data serialization settings
+            </summary>
+        </member>
+        <member name="T:WebExtras.JQDataTables.AASort">
+            <summary>
+            Specification for the column sorts
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQDataTables.AASort.columnNumber">
+            <summary>
+            Column number. This is zero indexed i.e the column numbers start from 0
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQDataTables.AASort.sortType">
+            <summary>
+            Type of sort. Only valid values are "asc" and "desc"
+            </summary>
+        </member>
+        <member name="M:WebExtras.JQDataTables.AASort.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:WebExtras.JQDataTables.AASort.#ctor(System.Int32,WebExtras.JQDataTables.ESort)">
+            <summary>
+            Constructor to setup column number and sort type
+            </summary>
+            <param name="columnNumber">Column number</param>
+            <param name="sort">Sort type. Valid values are 'asc' and 'desc'</param>
+        </member>
+        <member name="M:WebExtras.JQDataTables.AASort.ToArray">
+            <summary>
+            Converts the current AASort object to an array
+            </summary>
+            <returns>Resultant object array</returns>
+        </member>
+        <member name="T:WebExtras.JQDataTables.AOColumn">
+            <summary>
+            Specification for a Datatables data column
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQDataTables.AOColumn.aDataSort">
+            <summary>
+            Allows a column's sorting to take multiple columns into account when doing a 
+            sort. For example first name / last name columns make sense to do a multi-column 
+            sort over the two columns.
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQDataTables.AOColumn.asSorting">
+            <summary>
+            You can control the default sorting direction, and even alter the behaviour of 
+            the sort handler (i.e. only allow ascending sorting etc) using this parameter
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQDataTables.AOColumn.bSearchable">
+            <summary>
+            Enable or disable filtering on the data in this column
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQDataTables.AOColumn.bSortable">
+            <summary>
+            Enable / Disable sorting based on this column
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQDataTables.AOColumn.bVisible">
+            <summary>
+            Flag indicating whether the column is visible
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQDataTables.AOColumn.iDataSort">
+            <summary>
+            The column index (starting from 0!) that you wish a sort to be performed 
+            upon when this column is selected for sorting. This can be used for sorting 
+            on hidden columns for example
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQDataTables.AOColumn.sCellType">
+            <summary>
+            Change the cell type created for the column - either TD cells or TH cells. 
+            This can be useful as TH cells have semantic meaning in the table body, 
+            allowing them to act as a header for a row (you may wish to add scope='row' 
+            to the TH elements)
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQDataTables.AOColumn.sClass">
+            <summary>
+            CSS Class to give to each cell in this column
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQDataTables.AOColumn.sContentPadding">
+            <summary>
+            When DataTables calculates the column widths to assign to each column, it 
+            finds the longest string in each column and then constructs a temporary 
+            table and reads the widths from that. The problem with this is that "mmm" 
+            is much wider then "iiii", but the latter is a longer string - thus the 
+            calculation can go wrong (doing it properly and putting it into an DOM 
+            object and measuring that is horribly(!) slow). Thus as a "work around" 
+            we provide this option. It will append its value to the text that is found 
+            to be the longest string for the column - i.e. padding. Generally you 
+            shouldn't need this, and it is not documented on the general 
+            DataTables.net documentation
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQDataTables.AOColumn.sDefaultContent">
+            <summary>
+            Allows a default value to be given for a column's data, and will be used 
+            whenever a null data source is encountered (this can be because mData 
+            is set to null, or because the data source itself is null)
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQDataTables.AOColumn.sName">
+            <summary>
+            This parameter is only used in DataTables' server-side processing. It can 
+            be exceptionally useful to know what columns are being displayed on the 
+            client side, and to map these to database fields. When defined, the names 
+            also allow DataTables to reorder information from the server if it comes 
+            back in an unexpected order (i.e. if you switch your columns around on 
+            the client-side, your server-side code does not also need updating)
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQDataTables.AOColumn.sSortDataType">
+            <summary>
+            Defines a data source type for the sorting which can be used to read 
+            real-time information from the table (updating the internally cached version) 
+            prior to sorting. This allows sorting to occur on user editable elements 
+            such as form inputs
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQDataTables.AOColumn.sTitle">
+            <summary>
+            The title of the column
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQDataTables.AOColumn.sType">
+            <summary>
+            The type allows you to specify how the data for this column will be sorted. 
+            Four types (string, numeric, date and html (which will strip HTML tags before 
+            sorting)) are currently available. Note that only date formats understood by 
+            Javascript's Date() object will be accepted as type date. 
+            For example: "Mar 26, 2008 5:03 PM"
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQDataTables.AOColumn.sWidth">
+            <summary>
+            Defining the width of the column, this parameter may take any CSS value 
+            (3em, 20px etc). DataTables applies 'smart' widths to columns which have 
+            not been given a specific width through this interface ensuring that the 
+            table remains readable
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQDataTables.AOColumn.fnCreatedCell">
+            <summary>
+            Developer definable function that is called whenever a cell is created (Ajax 
+            source, etc) or processed for input (DOM source). This can be used as a 
+            compliment to mRender allowing you to modify the DOM element (add background 
+            colour for example) when the element is available.
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQDataTables.AOColumn.fnRender">
+            <summary>
+            Custom display function that will be called for the display of each cell in this column.
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQDataTables.AOColumn.mData">
+            <summary>
+            This property can be used to read data from any JSON data source property, including 
+            deeply nested objects / properties. mData can be given in a number of different ways 
+            which effect its behaviour: integer, string, null or a <see cref="T:WebExtras.Core.JsFunc"/> object
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQDataTables.AOColumn.mRender">
+            <summary>
+            This property is the rendering partner to mData and it is suggested that when you want 
+            to manipulate data for display (including filtering, sorting etc) but not altering the 
+            underlying data for the table, use this property. mData can actually do everything this 
+            property can and more, but this parameter is easier to use since there is no 'set' 
+            option. Like mData is can be given in a number of different ways to effect its behaviour, 
+            with the addition of supporting array syntax for easy outputting of arrays (including 
+            arrays of objects): integer, string or a <see cref="T:WebExtras.Core.JsFunc"/> object
+            </summary>
+        </member>
+        <member name="M:WebExtras.JQDataTables.AOColumn.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:WebExtras.JQDataTables.AOColumn.#ctor(System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="title">Column title/header</param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="T:WebExtras.JQDataTables.OAria">
+            <summary>
+            Language ARIA label options
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQDataTables.OAria.sSortAscending">
+            <summary>
+            ARIA label that is added to the table headers when the column may be 
+            sorted ascending by activing the column (click or return when focused). 
+            Note that the column header is prefixed to this string
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQDataTables.OAria.sSortDescending">
+            <summary>
+            ARIA label that is added to the table headers when the column may be 
+            sorted descending by activing the column (click or return when focused). 
+            Note that the column header is prefixed to this string
+            </summary>
+        </member>
+        <member name="T:WebExtras.JQDataTables.DatatableFilters">
+            <summary>
+            Datatables callback variables
+            </summary>
+        </member>
+        <member name="M:WebExtras.JQDataTables.DatatableFilters.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="P:WebExtras.JQDataTables.DatatableFilters.sEcho">
+            Request sequence number sent by DataTable,
+            same value must be returned in response
+        </member>
+        <member name="P:WebExtras.JQDataTables.DatatableFilters.sSearch">
+            Text used for filtering
+        </member>
+        <member name="P:WebExtras.JQDataTables.DatatableFilters.iDisplayLength">
+            Number of records that should be shown in table
+        </member>
+        <member name="P:WebExtras.JQDataTables.DatatableFilters.iDisplayStart">
+            First record that should be shown(used for paging)
+        </member>
+        <member name="P:WebExtras.JQDataTables.DatatableFilters.iColumns">
+            Number of columns in table
+        </member>
+        <member name="P:WebExtras.JQDataTables.DatatableFilters.iSortingCols">
+            Number of columns that are used in sorting
+        </member>
+        <member name="P:WebExtras.JQDataTables.DatatableFilters.iSortCol_0">
+            First sort column numeric index, possible to have
+            _1,_2 etc for multi column sorting
+        </member>
+        <member name="P:WebExtras.JQDataTables.DatatableFilters.sSortDir_0">
+            Sort direction of the first sorted column, asc or desc
+        </member>
+        <member name="P:WebExtras.JQDataTables.DatatableFilters.sColumns">
+            Comma separated list of column names
+        </member>
+        <member name="P:WebExtras.JQDataTables.DatatableFilters.SortDirection">
+            <summary>
+            Sort direction decided on the sSortDir_0 property
+            </summary>
+        </member>
+        <member name="T:WebExtras.JQDataTables.DatatableRecordsSortExtension">
+            <summary>
+            Extension for sorting the DatatableRecords.aaData collection
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQDataTables.DatatableRecordsSortExtension.Currencies">
+            <summary>
+            A list of predefined HTML currency syntax
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQDataTables.DatatableRecordsSortExtension.SpChars">
+            <summary>
+            An array of predefined special characters
+            </summary>
+        </member>
+        <member name="M:WebExtras.JQDataTables.DatatableRecordsSortExtension.Sort(System.Collections.Generic.IEnumerable{System.Collections.Generic.IEnumerable{System.String}},System.Int32,WebExtras.JQDataTables.ESort,System.Collections.Generic.IDictionary{System.Int32,System.Func{System.String,System.Object}})">
+            <summary>
+            Sort DatatableRecords.aaData based on the given column number and sort direction
+            </summary>
+            <param name="aaData">DatatableRecords table data to be sorted</param>
+            <param name="columnNumber">Column to sort on</param>
+            <param name="customParsers">[Optional] A dictionary containing the column number as an associated data parser function.
+            Defaults to null.</param>
+            <param name="type">Sort direction</param>
+        </member>
+        <member name="M:WebExtras.JQDataTables.DatatableRecordsSortExtension.SortAscending(System.Collections.Generic.IEnumerable{System.Collections.Generic.IEnumerable{System.String}},System.Int32,System.Collections.Generic.IDictionary{System.Int32,System.Func{System.String,System.Object}})">
+            <summary>
+            Sort DatatableRecords.aaData ascending by given column number
+            </summary>
+            <param name="aaData">DatatableRecords table data to be sorted</param>
+            <param name="columnNumber">Column to sort on</param>
+            <param name="customParsers">[Optional] A dictionary containing the column number as an associated data parser function.
+            Defaults to null.</param>
+            <returns>Ascending sorted records</returns>
+        </member>
+        <member name="M:WebExtras.JQDataTables.DatatableRecordsSortExtension.SortDescending(System.Collections.Generic.IEnumerable{System.Collections.Generic.IEnumerable{System.String}},System.Int32,System.Collections.Generic.IDictionary{System.Int32,System.Func{System.String,System.Object}})">
+            <summary>
+            Sort DatatableRecords.aaData descending based on given column number
+            </summary>
+            <param name="aaData">DatatableRecords table data to be sorted</param>
+            <param name="columnNumber">Column number to sort on</param>
+            <param name="customParsers">[Optional] A dictionary containing the column number as an associated data parser function.
+            Defaults to null.</param>
+            <returns>Descending sorted records</returns>
+        </member>
+        <member name="M:WebExtras.JQDataTables.DatatableRecordsSortExtension.SanitiseString(System.String)">
+            <summary>
+            Sanitises given string by stripping any HTML tags and HTML currency tags
+            from the given string
+            </summary>
+            <param name="str">String to be sanitized</param>
+            <returns>Sanitised string</returns>
+        </member>
+        <member name="P:WebExtras.JQDataTables.DatatableRecordsSortExtension.AllStripStrings">
+            <summary>
+            All special string to be stripped to sanitize the input string
+            </summary>
+        </member>
+        <member name="T:WebExtras.JQDataTables.EAOColumn">
+            <summary>
+            AO column type
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQDataTables.EAOColumn.String">
+            <summary>
+            String column type
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQDataTables.EAOColumn.Numeric">
+            <summary>
+            Numeric column type
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQDataTables.EAOColumn.Date">
+            <summary>
+            Date column type
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQDataTables.EAOColumn.Html">
+            <summary>
+            Html column type
+            </summary>
+        </member>
+        <member name="T:WebExtras.JQDataTables.EAOColumnTypeJsonConverter">
+            <summary>
+            EAOColumnType enum's custom Json Converter
+            </summary>
+        </member>
+        <member name="M:WebExtras.JQDataTables.EAOColumnTypeJsonConverter.CanConvert(System.Type)">
+            <summary>
+            Determines whether this instance can convert the specified object type
+            </summary>
+            <param name="objectType">Type of the object</param>
+            <returns>true if this instance can convert the specified object type; otherwise, false</returns>
+        </member>
+        <member name="M:WebExtras.JQDataTables.EAOColumnTypeJsonConverter.ReadJson(Newtonsoft.Json.JsonReader,System.Type,System.Object,Newtonsoft.Json.JsonSerializer)">
+            <summary>
+            Reads the JSON representation of the object
+            </summary>
+            <param name="reader">The Newtonsoft.Json.JsonReader to read from</param>
+            <param name="objectType">Type of the object</param>
+            <param name="existingValue">The existing value of object being read</param>
+            <param name="serializer">The calling serializer</param>
+            <returns>The object value</returns>
+        </member>
+        <member name="M:WebExtras.JQDataTables.EAOColumnTypeJsonConverter.WriteJson(Newtonsoft.Json.JsonWriter,System.Object,Newtonsoft.Json.JsonSerializer)">
+            <summary>
+            Writes the JSON representation of the object
+            </summary>
+            <param name="writer">The Newtonsoft.Json.JsonWriter to write to</param>
+            <param name="value">The Newtonsoft.Json.JsonWriter to write to</param>
+            <param name="serializer">The Newtonsoft.Json.JsonWriter to write to</param>
+        </member>
+        <member name="T:WebExtras.JQDataTables.EServerMethod">
+            <summary>
+            HTTP method for Ajax call backs
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQDataTables.EServerMethod.Get">
+            <summary>
+            HTTP GET method
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQDataTables.EServerMethod.Post">
+            <summary>
+            HTTP POST method
+            </summary>
+        </member>
+        <member name="T:WebExtras.JQDataTables.EServerMethodJsonConverter">
+            <summary>
+            EServerMethod enum's custom Json Converter
+            </summary>
+        </member>
+        <member name="M:WebExtras.JQDataTables.EServerMethodJsonConverter.CanConvert(System.Type)">
+            <summary>
+            Determines whether this instance can convert the specified object type
+            </summary>
+            <param name="objectType">Type of the object</param>
+            <returns>true if this instance can convert the specified object type; otherwise, false</returns>
+        </member>
+        <member name="M:WebExtras.JQDataTables.EServerMethodJsonConverter.ReadJson(Newtonsoft.Json.JsonReader,System.Type,System.Object,Newtonsoft.Json.JsonSerializer)">
+            <summary>
+            Reads the JSON representation of the object
+            </summary>
+            <param name="reader">The Newtonsoft.Json.JsonReader to read from</param>
+            <param name="objectType">Type of the object</param>
+            <param name="existingValue">The existing value of object being read</param>
+            <param name="serializer">The calling serializer</param>
+            <returns>The object value</returns>
+        </member>
+        <member name="M:WebExtras.JQDataTables.EServerMethodJsonConverter.WriteJson(Newtonsoft.Json.JsonWriter,System.Object,Newtonsoft.Json.JsonSerializer)">
+            <summary>
+            Writes the JSON representation of the object
+            </summary>
+            <param name="writer">The Newtonsoft.Json.JsonWriter to write to</param>
+            <param name="value">The Newtonsoft.Json.JsonWriter to write to</param>
+            <param name="serializer">The Newtonsoft.Json.JsonWriter to write to</param>
+        </member>
+        <member name="T:WebExtras.JQDataTables.OLanguage">
+            <summary>
+            Language init options
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQDataTables.OLanguage.oAria">
+            <summary>
+            ARIA label settings
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQDataTables.OLanguage.oPaginate">
+            <summary>
+            Pagination text settings when using 'full_numbers' type pagination
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQDataTables.OLanguage.sEmptyTable">
+            <summary>
+            This string is shown in preference to sZeroRecords when the table is empty of data 
+            (regardless of filtering). Note that this is an optional parameter - if it is not 
+            given, the value of sZeroRecords will be used instead (either the default or given value)
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQDataTables.OLanguage.sInfo">
+            <summary>
+            This string gives information to the end user about the information that is current on
+            display on the page. The _START_, _END_ and _TOTAL_ variables are all dynamically
+            replaced as the table display updates, and can be freely moved or removed as the
+            language requirements change
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQDataTables.OLanguage.sInfoEmpty">
+            <summary>
+            Display information string for when the table is empty. Typically the format of this
+            string should match sInfo
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQDataTables.OLanguage.sInfoFiltered">
+            <summary>
+            When a user filters the information in a table, this string is appended to the information 
+            (sInfo) to give an idea of how strong the filtering is. The variable MAX is dynamically updated
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQDataTables.OLanguage.sInfoPostFix">
+            <summary>
+            If can be useful to append extra information to the info string at times, and this variable 
+            does exactly that. This information will be appended to the sInfo (sInfoEmpty and sInfoFiltered 
+            in whatever combination they are being used) at all times
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQDataTables.OLanguage.sInfoThousands">
+            <summary>
+            DataTables has a build in number formatter (fnFormatNumber) which is used to format large 
+            numbers that are used in the table information. By default a comma is used, but this can be 
+            trivially changed to any character you wish with this parameter
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQDataTables.OLanguage.sLengthMenu">
+            <summary>
+            Detail the action that will be taken when the drop down menu for the pagination length option 
+            is changed. The 'MENU' variable is replaced with a default select list of 10, 25, 50 and 100, 
+            and can be replaced with a custom select box if required
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQDataTables.OLanguage.sLoadingRecords">
+            <summary>
+            When using Ajax sourced data and during the first draw when DataTables is gathering the data, 
+            this message is shown in an empty row in the table to indicate to the end user the the data 
+            is being loaded. Note that this parameter is not used when loading data by server-side 
+            processing, just Ajax sourced data with client-side processing
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQDataTables.OLanguage.sProcessing">
+            <summary>
+            Text which is displayed when the table is processing a user action (usually a sort command or similar)
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQDataTables.OLanguage.sSearch">
+            <summary>
+            Details the actions that will be taken when the user types into the filtering input text box. 
+            The variable "INPUT", if used in the string, is replaced with the HTML text box for the 
+            filtering input allowing control over where it appears in the string. If "INPUT" is not given 
+            then the input box is appended to the string automatically
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQDataTables.OLanguage.sUrl">
+            <summary>
+            All of the language information can be stored in a file on the server-side, which DataTables will 
+            look up if this parameter is passed. It must store the URL of the language file, which is in a JSON 
+            format, and the object has the same properties as the oLanguage object in the initialiser object (i.e. 
+            the above parameters). Please refer to one of the example language files to see how this works in action
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQDataTables.OLanguage.sZeroRecords">
+            <summary>
+            Text shown inside the table records when the is no information to be displayed after filtering. 
+            sEmptyTable is shown when there is simply no information in the table at all (regardless of filtering)
+            </summary>
+        </member>
+        <member name="T:WebExtras.JQDataTables.EPagination">
+            <summary>
+            Pagination type
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQDataTables.EPagination.None">
+            <summary>
+            No paging
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQDataTables.EPagination.Bootstrap">
+            <summary>
+            This plug-in provides the mark-up needed for using Twitter Bootstrap's pagination 
+            styling with DataTables. Note that this plug-in uses the fnPagingInfo API plug-in 
+            method to obtain paging information.
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQDataTables.EPagination.Bootstrap3">
+            <summary>
+            This plugin provides the mark-up for using Twitter Bootstrap 3's pagination styling
+            with DataTables
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQDataTables.EPagination.FourButton">
+            <summary>
+            The built-in pagination functions provide either two buttons (forward / back) 
+            or lots of buttons (forward, back, first, last and individual pages). This 
+            plug-in meets the two in the middle providing navigation controls for forward, 
+            back, first and last.
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQDataTables.EPagination.FullNumbers">
+            <summary>
+            Full numeric pagination
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQDataTables.EPagination.Scrolling">
+            <summary>
+            This modification of DataTables' standard two button pagination controls adds a 
+            little animation effect to the paging action by redrawing the table multiple times 
+            for each event, each draw progressing by one row until the required point in the 
+            table is reached.
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQDataTables.EPagination.TwoButton">
+            <summary>
+            Two button pagination
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQDataTables.EPagination.Gumby">
+            <summary>
+            Gumby pagination
+            </summary>
+        </member>
+        <member name="T:WebExtras.JQDataTables.ESort">
+            <summary>
+            Sort types
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQDataTables.ESort.Ascending">
+            <summary>
+            Ascending sort
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQDataTables.ESort.Descending">
+            <summary>
+            Descending sort
+            </summary>
+        </member>
+        <member name="T:WebExtras.JQDataTables.Datatable">
+            <summary>
+            jQuery Datatable object
+            </summary>
+        </member>
+        <member name="M:WebExtras.JQDataTables.Datatable.#ctor(WebExtras.JQDataTables.DatatableSettings,System.Collections.Generic.IEnumerable{WebExtras.JQDataTables.DatatableColumn},WebExtras.JQDataTables.DatatableRecords,System.Collections.Generic.IEnumerable{WebExtras.JQDataTables.PostbackItem},System.Boolean)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="settings">Datatable settings</param>
+            <param name="columns">Datatable column specifications</param>
+            <param name="records">Datatable records</param>
+            <param name="postbacks">[Optional] Postback data for server side processing</param>
+            <param name="enableStatusColumn">[Optional] flag indicating whether to enable status column. Defaults to false</param>
+        </member>
+        <member name="M:WebExtras.JQDataTables.Datatable.#ctor(System.String,WebExtras.JQDataTables.DatatableSettings,System.Collections.Generic.IEnumerable{WebExtras.JQDataTables.DatatableColumn},WebExtras.JQDataTables.DatatableRecords,System.Collections.Generic.IEnumerable{WebExtras.JQDataTables.PostbackItem},System.Boolean)">
+            <summary>
+            Constructor to initialize with an HTML field ID
+            </summary>
+            <param name="id">HTML field ID for the Datatable</param>
+            <param name="settings">Datatable settings</param>
+            <param name="columns">Datatable column specifications</param>
+            <param name="records">Datatable records</param>
+            <param name="postbacks">[Optional] Postback data for server side processing</param>
+            <param name="enableStatusColumn">[Optional] flag indicating whether to enable status column. Defaults to false</param>
+        </member>
+        <member name="M:WebExtras.JQDataTables.Datatable.#ctor(WebExtras.JQDataTables.DatatableSettings,WebExtras.JQDataTables.DatatableRecords,System.Collections.Generic.IEnumerable{WebExtras.JQDataTables.PostbackItem},System.Boolean)">
+            <summary>
+            Constructor. Note. The column specifications must be defined via the DatatableSettings constructor
+            </summary>
+            <param name="settings">Datatable settings</param>
+            <param name="records">Datatable records</param>
+            <param name="postbacks">[Optional] Postback data for server side processing</param>
+            <param name="enableStatusColumn">[Optional] flag indicating whether to enable status column. Defaults to false</param>
+        </member>
+        <member name="M:WebExtras.JQDataTables.Datatable.#ctor(System.String,WebExtras.JQDataTables.DatatableSettings,WebExtras.JQDataTables.DatatableRecords,System.Collections.Generic.IEnumerable{WebExtras.JQDataTables.PostbackItem},System.Boolean)">
+            <summary>
+            Constructor. Note. The column specifications must be defined via the DatatableSettings constructor
+            </summary>
+            <param name="id">HTML field ID for the Datatable</param>
+            <param name="settings">Datatable settings</param>
+            <param name="records">Datatable records</param>
+            <param name="postbacks">[Optional] Postback data for server side processing</param>
+            <param name="enableStatusColumn">[Optional] flag indicating whether to enable status column. Defaults to false</param>
+        </member>
+        <member name="P:WebExtras.JQDataTables.Datatable.ID">
+            <summary>
+            HTML field ID for the Datatable
+            </summary>
+        </member>
+        <member name="P:WebExtras.JQDataTables.Datatable.Settings">
+            <summary>
+            Datatable settings
+            </summary>
+        </member>
+        <member name="P:WebExtras.JQDataTables.Datatable.Columns">
+            <summary>
+            Datatable column headings
+            </summary>
+        </member>
+        <member name="P:WebExtras.JQDataTables.Datatable.Records">
+            <summary>
+            Datatable records
+            </summary>
+        </member>
+        <member name="P:WebExtras.JQDataTables.Datatable.Postbacks">
+            <summary>
+            Postback data for server side processing
+            </summary>
+        </member>
+        <member name="P:WebExtras.JQDataTables.Datatable.EnableStatusColumn">
+            <summary>
+            Flag indicating whether to enable status column
+            </summary>
+        </member>
+        <member name="T:WebExtras.JQDataTables.DatatableColumn">
+            <summary>
+            Datatable column headings
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQDataTables.DatatableColumn.Name">
+            <summary>
+            Text heading for the column
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQDataTables.DatatableColumn.Sortable">
+            <summary>
+            Flag indicating whether this column is sortable
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQDataTables.DatatableColumn.CssClass">
+            <summary>
+            Css class for this column
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQDataTables.DatatableColumn.Width">
+            <summary>
+            Column width in percent
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQDataTables.DatatableColumn.Visible">
+            <summary>
+            Flag indicating whether this column is visible
+            </summary>
+        </member>
+        <member name="M:WebExtras.JQDataTables.DatatableColumn.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:WebExtras.JQDataTables.DatatableColumn.#ctor(System.String,System.String,System.Nullable{System.Int32},System.Nullable{System.Boolean},System.Nullable{System.Boolean})">
+            <summary>
+            Default constructor
+            </summary>
+            <param name="name">Text heading for the column</param>
+            <param name="cssClass">[Optional] CSS class for the cells of this column. Defaults to null</param>
+            <param name="width">[Optional] Column width in percent. Defaults to null</param>
+            <param name="visible">[Optional] Flag indicating whether this column is visible. Defaults to true</param>
+            <param name="bSortable">[Optional] Flag indicating whether to enable sorting for this column. Defaults to true</param>
+        </member>
+        <member name="T:WebExtras.JQDataTables.DatatableRecords">
+             <summary>
+             Class encapsulating the returned well formed json data to a datatables table from a ajax call
+             http://www.datatables.net
+            
+             "In reply to each request for information that DataTables makes to the server,
+             it expects to get a well formed JSON object with the following parameters."
+             http://www.datatables.net/usage/server-side
+             </summary>
+        </member>
+        <member name="F:WebExtras.JQDataTables.DatatableRecords.m_aaData">
+            <summary>
+            The data in a 2D array
+            </summary>
+        </member>
+        <member name="M:WebExtras.JQDataTables.DatatableRecords.SanitiseAAData(System.Collections.Generic.IEnumerable{System.Collections.Generic.IEnumerable{System.String}})">
+            <summary>
+            Check whether the aaData property is jagged collection and 
+            if it is converts it to a square/rectangular collection.
+            This makes sure that we don't have missing columns and avoids
+            DataTables throwing javascript errors for columns missing.
+            </summary>
+            <param name="toBeSanitised">Collection to be sanitised</param>
+            <returns>Sanitised collection</returns>
+        </member>
+        <member name="M:WebExtras.JQDataTables.DatatableRecords.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:WebExtras.JQDataTables.DatatableRecords.ToString">
+            <summary>
+            Returns a JSON serialized version of this object
+            </summary>
+            <returns>Returns a JSON serialized version of this object</returns>
+        </member>
+        <member name="M:WebExtras.JQDataTables.DatatableRecords.RenderAADataAsTableRows">
+            <summary>
+            Render aaData as table rows
+            </summary>
+            <returns>Table rows in format <tr><td>...</td><td>...</td></tr></returns>
+        </member>
+        <member name="P:WebExtras.JQDataTables.DatatableRecords.iTotalDisplayRecords">
+            <summary>
+            Total records, before filtering (i.e. the total number of records in the database)
+            </summary>
+        </member>
+        <member name="P:WebExtras.JQDataTables.DatatableRecords.iTotalRecords">
+            <summary>
+            Total records, after filtering (i.e. the total number of records after filtering has been
+            applied - not just the number of records being returned in this result set)
+            </summary>
+        </member>
+        <member name="P:WebExtras.JQDataTables.DatatableRecords.sEcho">
+            <summary>
+            An unaltered copy of sEcho sent from the client side. This parameter will change with each draw (it is basically a draw count) -
+            so it is important that this is implemented. Note that it strongly recommended for security reasons that you 'cast'
+            this parameter to an integer in order to prevent Cross Site Scripting (XSS) attacks.
+            </summary>
+        </member>
+        <member name="P:WebExtras.JQDataTables.DatatableRecords.aaData">
+            <summary>
+            The data in a 2D array
+            </summary>
+        </member>
+        <member name="T:WebExtras.JQDataTables.DatatableSettings">
+            <summary>
+            jQuery Datatable settings
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQDataTables.DatatableSettings.bAutoWidth">
+            <summary>
+            Enable or disable automatic column width calculation. This can be disabled as an optimisation 
+            (it takes some time to calculate the widths) if the tables widths are passed in using aoColumns.
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQDataTables.DatatableSettings.bDeferRender">
+            <summary>
+            Deferred rendering can provide DataTables with a huge speed boost when you are using an Ajax or 
+            JS data source for the table. This option, when set to true, will cause DataTables to defer the 
+            creation of the table elements for each row until they are needed for a draw - saving a 
+            significant amount of time.
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQDataTables.DatatableSettings.bFilter">
+            <summary>
+            Enable or disable filtering of data. Filtering in DataTables is "smart" in that it allows the 
+            end user to input multiple words (space separated) and will match a row containing those words, 
+            even if not in the order that was specified (this allow matching across multiple columns). Note 
+            that if you wish to use filtering in DataTables this must remain 'true' - to remove the default 
+            filtering input box and retain filtering abilities, please use {@link DataTable.defaults.sDom}.
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQDataTables.DatatableSettings.bInfo">
+            <summary>
+            Enable or disable the table information display. This shows information about the data that is 
+            currently visible on the page, including information about filtered data if that action is being 
+            performed.
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQDataTables.DatatableSettings.bJQueryUI">
+            <summary>
+            Enable jQuery UI ThemeRoller support (required as ThemeRoller requires some slightly 
+            different and additional mark-up from what DataTables has traditionally used).
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQDataTables.DatatableSettings.bLengthChange">
+            <summary>
+            Allows the end user to select the size of a formatted page from a select menu
+            (sizes are 10, 25, 50 and 100). Requires pagination (bPaginate)
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQDataTables.DatatableSettings.bPaginate">
+            <summary>
+            Enable or disable pagination
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQDataTables.DatatableSettings.bServerSide">
+            <summary>
+            Configure DataTables to use server-side processing. Note that the sAjaxSource parameter must 
+            also be given in order to give DataTables a source to obtain the required data for each draw.
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQDataTables.DatatableSettings.bSort">
+            <summary>
+            Enable or disable sorting of columns. Sorting of individual columns can be disabled by the 
+            "bSortable" option for each column.
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQDataTables.DatatableSettings.bSortClasses">
+            <summary>
+            Enable or disable the addition of the classes 'sorting_1', 'sorting_2' and 'sorting_3' to 
+            the columns which are currently being sorted on. This is presented as a feature switch as 
+            it can increase processing time (while classes are removed and added) so for large data sets 
+            you might want to turn this off.
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQDataTables.DatatableSettings.bStateSave">
+            <summary>
+            Enable or disable state saving. When enabled a cookie will be used to save table display 
+            information such as pagination information, display length, filtering and sorting. As such 
+            when the end user reloads the page the display display will match what thy had previously set up.
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQDataTables.DatatableSettings.sScrollX">
+            <summary>
+            Enable horizontal scrolling. When a table is too wide to fit into a certain layout, or you have 
+            a large number of columns in the table, you can enable x-scrolling to show the table in a 
+            viewport, which can be scrolled. This property can be any CSS unit, or a number (in which case 
+            it will be treated as a pixel measurement).
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQDataTables.DatatableSettings.sScrollY">
+            <summary>
+            Enable vertical scrolling. Vertical scrolling will constrain the DataTable to the 
+            given height, and enable scrolling for any data which overflows the current viewport. 
+            This can be used as an alternative to paging to display a lot of data in a small area 
+            (although paging and scrolling can both be enabled at the same time). This property 
+            can be any CSS unit, or a number (in which case it will be treated as a pixel 
+            measurement).
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQDataTables.DatatableSettings.aoColumns">
+            <summary>
+            Individual data column specifications
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQDataTables.DatatableSettings.oLanguage">
+            <summary>
+            Language init options
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQDataTables.DatatableSettings.bDestroy">
+            <summary>
+            Replace a DataTable which matches the given selector and replace it with one which has the 
+            properties of the new initialisation object passed. If no table matches the selector, then 
+            the new DataTable will be constructed as per normal.
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQDataTables.DatatableSettings.bRetrieve">
+            <summary>
+            Retrieve the DataTables object for the given selector. Note that if the table has already 
+            been initialised, this parameter will cause DataTables to simply return the object that 
+            has already been set up - it will not take account of any changes you might have made to 
+            the initialisation object passed to DataTables (setting this parameter to true is an 
+            acknowledgement that you understand this). bDestroy can be used to reinitialise a table 
+            if you need.
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQDataTables.DatatableSettings.bScrollAutoCss">
+            <summary>
+            Indicate if DataTables should be allowed to set the padding / margin etc for the scrolling 
+            header elements or not. Typically you will want this.
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQDataTables.DatatableSettings.bScrollCollapse">
+            <summary>
+            When vertical (y) scrolling is enabled, DataTables will force the height of the table's 
+            viewport to the given height at all times (useful for layout). However, this can look odd 
+            when filtering data down to a small data set, and the footer is left "floating" further 
+            down. This parameter (when enabled) will cause DataTables to collapse the table's viewport 
+            down when the result set will fit within the given Y height.
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQDataTables.DatatableSettings.bSortCellsTop">
+            <summary>
+            Allows control over whether DataTables should use the top (true) unique cell that is found 
+            for a single column, or the bottom (false - default). This is useful when using complex headers.
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQDataTables.DatatableSettings.iCookieDuration">
+            <summary>
+            Duration of the cookie which is used for storing session information. This value is given in seconds.
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQDataTables.DatatableSettings.iDeferLoading">
+            <summary>
+            When enabled DataTables will not make a request to the server for the first page draw - rather 
+            it will use the data already on the page (no sorting etc will be applied to it), thus saving on 
+            an XHR at load time. iDeferLoading is used to indicate that deferred loading is required, but 
+            it is also used to tell DataTables how many records there are in the full table (allowing the 
+            information element and pagination to be displayed correctly). In the case where a filtering is 
+            applied to the table on initial load, this can be indicated by giving the parameter as an array, 
+            where the first element is the number of records available after filtering and the second element 
+            is the number of records without filtering (allowing the table information element to be shown 
+            correctly).
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQDataTables.DatatableSettings.iDisplayLength">
+            <summary>
+            Number of rows to display on a single page when using pagination. If feature enabled
+            (bLengthChange) then the end user will be able to over-ride this to a custom setting
+            using a pop-up menu
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQDataTables.DatatableSettings.iDisplayStart">
+            <summary>
+            Define the starting point for data display when using DataTables with pagination. Note that this 
+            parameter is the number of records, rather than the page number, so if you have 10 records per 
+            page and want to start on the third page, it should be "20".
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQDataTables.DatatableSettings.iScrollLoadGap">
+            <summary>
+            The scroll gap is the amount of scrolling that is left to go before DataTables will load the 
+            next 'page' of data automatically. You typically want a gap which is big enough that the 
+            scrolling will be smooth for the user, while not so large that it will load more data than need.
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQDataTables.DatatableSettings.iTabIndex">
+            <summary>
+            By default DataTables allows keyboard navigation of the table (sorting, paging, and filtering) 
+            by adding a tabindex attribute to the required elements. This allows you to tab through the 
+            controls and press the enter key to activate them. The tabindex is default 0, meaning that the 
+            tab follows the flow of the document. You can overrule this using this parameter if you wish. 
+            Use a value of -1 to disable built-in keyboard navigation.
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQDataTables.DatatableSettings.oSearch">
+            <summary>
+            This parameter allows you to have define the global filtering state at initialisation time. 
+            As an object the "sSearch" parameter must be defined, but all other parameters are optional. 
+            When "bRegex" is true, the search string will be treated as a regular expression, when false 
+            (default) it will be treated as a straight string. When "bSmart" DataTables will use it's 
+            smart filtering methods (to word match at any point in the data), when false this will not 
+            be done.
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQDataTables.DatatableSettings.sAjaxDataProp">
+            <summary>
+            By default DataTables will look for the property 'aaData' when obtaining data from an Ajax 
+            source or for server-side processing - this parameter allows that property to be changed. 
+            You can use Javascript dotted object notation to get a data source for multiple levels of 
+            nesting.
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQDataTables.DatatableSettings.sAjaxSource">
+            <summary>
+            You can instruct DataTables to load data from an external source using this parameter (use 
+            aData if you want to pass data in you already have). Simply provide a url a JSON object can 
+            be obtained from. This object must include the parameter 'aaData' which is the data source 
+            for the table.
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQDataTables.DatatableSettings.sCookiePrefix">
+            <summary>
+            This parameter can be used to override the default prefix that DataTables assigns to a 
+            cookie when state saving is enabled.
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQDataTables.DatatableSettings.sDom">
+            <summary>
+            This initialisation variable allows you to specify exactly where in the DOM you want 
+            DataTables to inject the various controls it adds to the page (for example you might 
+            want the pagination controls at the top of the table). DIV elements (with or without 
+            a custom class) can also be added to aid styling.
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQDataTables.DatatableSettings.sPaginationType">
+            <summary>
+            DataTables features two different built-in pagination interaction methods
+            ('two_button' or 'full_numbers') which present different page controls to the end user.
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQDataTables.DatatableSettings.sScrollXInner">
+            <summary>
+            This property can be used to force a DataTable to use more width than it might otherwise 
+            do when x-scrolling is enabled. For example if you have a table which requires to be well 
+            spaced, this parameter is useful for "over-sizing" the table, and thus forcing scrolling. 
+            This property can by any CSS unit, or a number (in which case it will be treated as a 
+            pixel measurement).
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQDataTables.DatatableSettings.sServerMethod">
+            <summary>
+            Set the HTTP method that is used to make the Ajax call for server-side processing or 
+            Ajax sourced data.
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQDataTables.DatatableSettings.aLengthMenu">
+            <summary>
+            This parameter allows you to readily specify the entries in the length dropdown menu that 
+            DataTables shows when pagination is enabled. It can be either a 1D array of options which 
+            will be used for both the displayed option and the value, or a 2D array which will use the 
+            array in the first position as the value, and the array in the second position as the 
+            displayed options (useful for language strings such as 'All')
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQDataTables.DatatableSettings.fnCookieCallback">
+            <summary>
+            Customise the cookie and / or the parameters being stored when using DataTables with state saving enabled. 
+            This function is called whenever the cookie is modified, and it expects a fully formed cookie string to 
+            be returned. Note that the data object passed in is a Javascript object which must be converted to a 
+            string (JSON.stringify for example).
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQDataTables.DatatableSettings.fnCreatedRow">
+            <summary>
+            This function is called when a TR element is created (and all TD child elements have been inserted), or \
+            registered if using a DOM source, allowing manipulation of the TR element (adding classes etc)
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQDataTables.DatatableSettings.fnDrawCallback">
+            <summary>
+            This function is called on every 'draw' event, and allows you to dynamically modify any aspect you want 
+            about the created DOM.
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQDataTables.DatatableSettings.fnHeaderCallback">
+            <summary>
+            This function is called on every 'draw' event, and allows you to dynamically modify the header row. This 
+            can be used to calculate and display useful information about the table.
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQDataTables.DatatableSettings.fnFooterCallback">
+            <summary>
+            Identical to fnHeaderCallback() but for the table footer this function allows you to modify the table 
+            footer on every 'draw' even.
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQDataTables.DatatableSettings.fnFormatNumber">
+            <summary>
+            When rendering large numbers in the information element for the table (i.e. "Showing 1 to 10 of 57 
+            entries") DataTables will render large numbers to have a comma separator for the 'thousands' units 
+            (e.g. 1 million is rendered as "1,000,000") to help readability for the end user. This function will 
+            override the default method DataTables uses.
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQDataTables.DatatableSettings.fnInfoCallback">
+            <summary>
+            The information element can be used to convey information about the current state of the table. 
+            Although the internationalisation options presented by DataTables are quite capable of dealing with 
+            most customisations, there may be times where you wish to customise the string further. This 
+            callback allows you to do exactly that.
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQDataTables.DatatableSettings.fnInitComplete">
+            <summary>
+            Called when the table has been initialised. Normally DataTables will initialise sequentially and 
+            there will be no need for this function, however, this does not hold true when using external 
+            language information since that is obtained using an async XHR call.
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQDataTables.DatatableSettings.fnPreDrawCallback">
+            <summary>
+            Called at the very start of each table draw and can be used to cancel the draw by returning false, 
+            any other return (including undefined) results in the full draw occurring).
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQDataTables.DatatableSettings.fnRowCallback">
+            <summary>
+            This function allows you to 'post process' each row after it have been generated for each table 
+            draw, but before it is rendered on screen. This function might be used for setting the row class name etc.
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQDataTables.DatatableSettings.fnServerData">
+            <summary>
+            This parameter allows you to override the default function which obtains the data from the server 
+            ($.getJSON) so something more suitable for your application. For example you could use POST data,
+            or pull information from a Gears or AIR database.
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQDataTables.DatatableSettings.fnServerParams">
+            <summary>
+            It is often useful to send extra data to the server when making an Ajax request - for example custom 
+            filtering information, and this callback function makes it trivial to send extra information to the server. 
+            The passed in parameter is the data set that has been constructed by DataTables, and you can add to this 
+            or modify it as you require.
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQDataTables.DatatableSettings.fnStateLoad">
+            <summary>
+            Load the table state. With this function you can define from where, and how, the state of a table is loaded. 
+            By default DataTables will load from its state saving cookie, but you might wish to use local storage (HTML5) 
+            or a server-side database.
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQDataTables.DatatableSettings.fnStateLoadParams">
+            <summary>
+            Callback which allows modification of the saved state prior to loading that state. This callback is called 
+            when the table is loading state from the stored data, but prior to the settings object being modified by the 
+            saved state. Note that for plug-in authors, you should use the 'stateLoadParams' event to load parameters for
+            a plug-in.
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQDataTables.DatatableSettings.fnStateLoaded">
+            <summary>
+            Callback that is called when the state has been loaded from the state saving method and the DataTables 
+            settings object has been modified as a result of the loaded state.
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQDataTables.DatatableSettings.fnStateSave">
+            <summary>
+            Save the table state. This function allows you to define where and how the state information for the 
+            table is stored - by default it will use a cookie, but you might want to use local storage (HTML5) or a 
+            server-side database.
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQDataTables.DatatableSettings.fnStateSaveParams">
+            <summary>
+            Callback which allows modification of the state to be saved. Called when the table has changed state a 
+            new state save is required. This method allows modification of the state saving object prior to actually
+            doing the save, including addition or other state properties or modification. Note that for plug-in authors,
+            you should use the 'stateSaveParams' event to save parameters for a plug-in.
+            </summary>
+        </member>
+        <member name="M:WebExtras.JQDataTables.DatatableSettings.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:WebExtras.JQDataTables.DatatableSettings.#ctor(System.Int32,WebExtras.JQDataTables.AASort,System.String,System.String,System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="displayLength">Number of rows to display on a single page when using pagination</param>
+            <param name="sortOption">Column sort option. If this is null no sorting will be applied</param>
+            <param name="ajaxSource">AJAX source URL</param>
+            <param name="footerSuffix">[Optional] This string gives information to the end user about the information
+            that is current on display on the page</param>
+            <param name="tableHeight">[Optional] Height of the table in pixels. Defaults to 200px. Note. Pass in a null if to do not
+            want any table height set</param>
+        </member>
+        <member name="M:WebExtras.JQDataTables.DatatableSettings.#ctor(System.Int32,System.Collections.Generic.IEnumerable{WebExtras.JQDataTables.AASort},System.String,System.String,System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="displayLength">Number of rows to display on a single page when using pagination</param>
+            <param name="sortOptions">Column sort options. If this is null no sorting will be applied</param>
+            <param name="ajaxSource">AJAX source URL</param>
+            <param name="footerSuffix">[Optional] This string gives information to the end user about the information
+            that is current on display on the page</param>
+            <param name="tableHeight">[Optional] Height of the table in pixels. Defaults to 200px. Note. Pass in a null if to do not
+            want any table height set</param>
+        </member>
+        <member name="M:WebExtras.JQDataTables.DatatableSettings.#ctor(System.Int32,WebExtras.JQDataTables.AOColumn,WebExtras.JQDataTables.AASort,System.String,System.String,System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="displayLength">Number of rows to display on a single page when using pagination</param>
+            <param name="column">Column specifications</param>
+            <param name="sortOption">Column sort option. If this is null no sorting will be applied</param>
+            <param name="ajaxSource">AJAX source URL</param>
+            <param name="footerSuffix">[Optional] This string gives information to the end user about the information
+            that is current on display on the page</param>
+            <param name="tableHeight">[Optional] Height of the table in pixels. Defaults to 200px. Note. Pass in a null if to do not
+            want any table height set</param>
+        </member>
+        <member name="M:WebExtras.JQDataTables.DatatableSettings.#ctor(System.Int32,System.Collections.Generic.IEnumerable{WebExtras.JQDataTables.AOColumn},WebExtras.JQDataTables.AASort,System.String,System.String,System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="displayLength">Number of rows to display on a single page when using pagination</param>
+            <param name="columns">Column specifications</param>
+            <param name="sortOption">Column sort option. If this is null no sorting will be applied</param>
+            <param name="ajaxSource">AJAX source URL</param>
+            <param name="footerSuffix">[Optional] This string gives information to the end user about the information
+            that is current on display on the page</param>
+            <param name="tableHeight">[Optional] Height of the table in pixels. Defaults to 200px. Note. Pass in a null if to do not
+            want any table height set</param>
+        </member>
+        <member name="M:WebExtras.JQDataTables.DatatableSettings.#ctor(System.Int32,System.Collections.Generic.IEnumerable{WebExtras.JQDataTables.AOColumn},System.Collections.Generic.IEnumerable{WebExtras.JQDataTables.AASort},System.String,System.String,System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="displayLength">Number of rows to display on a single page when using pagination</param>
+            <param name="columns">Column specifications</param>
+            <param name="sortOptions">Column sort options. If this is null no sorting will be applied</param>
+            <param name="ajaxSource">AJAX source URL</param>
+            <param name="footerSuffix">[Optional] This string gives information to the end user about the information
+            that is current on display on the page</param>
+            <param name="tableHeight">[Optional] Height of the table in pixels. Defaults to 200px. Note. Pass in a null if to do not
+            want any table height set</param>
+            <exception cref="T:System.Exception"></exception>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="M:WebExtras.JQDataTables.DatatableSettings.SetupAASort(WebExtras.JQDataTables.AASort)">
+            <summary>
+            Setup the jQuery dataTables aaSort variable from given set
+            of sort option
+            </summary>
+            <param name="sortOption">Sort option</param>
+        </member>
+        <member name="M:WebExtras.JQDataTables.DatatableSettings.SetupAASort(System.Collections.Generic.IEnumerable{WebExtras.JQDataTables.AASort})">
+            <summary>
+            Setup the jQuery dataTables aaSort variable from given set
+            of sort options
+            </summary>
+            <param name="sortOptions">Sort options</param>
+        </member>
+        <member name="M:WebExtras.JQDataTables.DatatableSettings.SetupAOColumns(System.Collections.Generic.IEnumerable{WebExtras.JQDataTables.DatatableColumn})">
+            <summary>
+            Setup the jQuery dataTables aoColumns variable from the given
+            set of columns
+            </summary>
+            <param name="columns">Datatable columns</param>
+        </member>
+        <member name="M:WebExtras.JQDataTables.DatatableSettings.SetupPaging(WebExtras.JQDataTables.EPagination)">
+            <summary>
+            Setup the paging mechanism
+            </summary>
+            <param name="type">Pagination type to use</param>
+        </member>
+        <member name="M:WebExtras.JQDataTables.DatatableSettings.SetupfnCreatedRow">
+            <summary>
+            Sets up the created row callback. 
+            </summary>
+            <remarks>Invoked when status column is enabled for the datatable via the 
+            <see cref="T:WebExtras.JQDataTables.Datatable"/> constructor</remarks>
+        </member>
+        <member name="M:WebExtras.JQDataTables.DatatableSettings.SetupfnServerData(System.Collections.Generic.IEnumerable{WebExtras.JQDataTables.PostbackItem})">
+            <summary>
+            Sets up postbacks for the server data callback
+            </summary>
+            <param name="postbacks">Postbacks to be setup</param>
+            <remarks>Invoked when there are postbacks via the <see cref="T:WebExtras.JQDataTables.Datatable"/> constructor </remarks>
+        </member>
+        <member name="M:WebExtras.JQDataTables.DatatableSettings.ToString">
+            <summary>
+            Returns a JSON serialized version of this object
+            </summary>
+            <returns>Returns a JSON serialized version of this object</returns>
+        </member>
+        <member name="P:WebExtras.JQDataTables.DatatableSettings.aaSorting">
+            <summary>
+            If sorting is enabled, then DataTables will perform a first pass sort on initialisation.
+            You can define which column(s) the sort is performed upon, and the sorting direction, with
+            this variable. The aaSorting array should contain an array for each column to be sorted
+            initially containing the column's index and a direction string ('asc' or 'desc')
+            </summary>
+        </member>
+        <member name="P:WebExtras.JQDataTables.DatatableSettings.Paging">
+            <summary>
+            The current paging scheme
+            </summary>
+        </member>
+        <member name="T:WebExtras.JQDataTables.OPaginate">
+            <summary>
+            Language pagination options
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQDataTables.OPaginate.sFirst">
+            <summary>
+            Text to use when using the 'full_numbers' type of pagination for the button to take the user to the first page
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQDataTables.OPaginate.sLast">
+            <summary>
+            Text to use when using the 'full_numbers' type of pagination for the button to take the user to the last page
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQDataTables.OPaginate.sNext">
+            <summary>
+            Text to use for the 'next' pagination button (to take the user to the next page)
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQDataTables.OPaginate.sPrevious">
+            <summary>
+            Text to use for the 'previous' pagination button (to take the user to the previous page)
+            </summary>
+        </member>
+        <member name="T:WebExtras.JQDataTables.OSearch">
+            <summary>
+            Defines the global filtering state at initialisation time
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQDataTables.OSearch.bCaseInsensitive">
+            <summary>
+            Flag to indicate if the filtering should be case insensitive or not
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQDataTables.OSearch.bRegex">
+            <summary>
+            Flag to indicate if the search term should be interpreted as a regular 
+            expression (true) or not (false) and therefore and special regex characters escaped
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQDataTables.OSearch.bSmart">
+            <summary>
+            Flag to indicate if DataTables is to use its smart filtering or not.
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQDataTables.OSearch.sSearch">
+            <summary>
+            Applied search term
+            </summary>
+        </member>
+        <member name="T:WebExtras.JQDataTables.PostbackItem">
+            <summary>
+            Server postback item to be posted for server side processing
+            </summary>
+        </member>
+        <member name="M:WebExtras.JQDataTables.PostbackItem.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:WebExtras.JQDataTables.PostbackItem.#ctor(System.String,System.Object)">
+            <summary>
+            Constructor to initialize values
+            </summary>
+            <param name="objName">Name of the postback object</param>
+            <param name="objValue">Value for the postback object</param>
+        </member>
+        <member name="M:WebExtras.JQDataTables.PostbackItem.FromObject(System.Object)">
+            <summary>
+            Generate Datatables Postback items from the attributes/value
+            pairs of the given object
+            </summary>
+            <param name="o">Object to generate Postback items from</param>
+            <returns>Generated Postback items</returns>
+        </member>
+        <member name="P:WebExtras.JQDataTables.PostbackItem.name">
+            <summary>
+            Name of the postback object
+            </summary>
+        </member>
+        <member name="P:WebExtras.JQDataTables.PostbackItem.value">
+            <summary>
+            Value for the postback object
+            </summary>
+        </member>
+        <member name="T:WebExtras.JQDataTables.PostbackItemConverter">
+            <summary>
+            PostbackItem JSON converter
+            </summary>
+        </member>
+        <member name="M:WebExtras.JQDataTables.PostbackItemConverter.CanConvert(System.Type)">
+            <summary>
+            Determines whether this instance can convert the specified object type
+            </summary>
+            <param name="objectType">Type of the object</param>
+            <returns>true if this instance can convert the specified object type; otherwise, false</returns>
+        </member>
+        <member name="M:WebExtras.JQDataTables.PostbackItemConverter.ReadJson(Newtonsoft.Json.JsonReader,System.Type,System.Object,Newtonsoft.Json.JsonSerializer)">
+            <summary>
+            Reads the JSON representation of the object
+            </summary>
+            <param name="reader">The Newtonsoft.Json.JsonReader to read from</param>
+            <param name="objectType">Type of the object</param>
+            <param name="existingValue">The existing value of object being read</param>
+            <param name="serializer">The calling serializer</param>
+            <returns>The object value</returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:WebExtras.JQDataTables.PostbackItemConverter.WriteJson(Newtonsoft.Json.JsonWriter,System.Object,Newtonsoft.Json.JsonSerializer)">
+            <summary>
+            Writes the JSON representation of the object
+            </summary>
+            <param name="writer">The Newtonsoft.Json.JsonWriter to write to</param>
+            <param name="value">The Newtonsoft.Json.JsonWriter to write to</param>
+            <param name="serializer">The Newtonsoft.Json.JsonWriter to write to</param>
+        </member>
+        <member name="T:WebExtras.JQFlot.FlotChart">
+            <summary>
+            a flot chart containing options and series to be plotted
+            </summary>
+        </member>
+        <member name="M:WebExtras.JQFlot.FlotChart.ToString">
+            <summary>
+            Converts the flot chart to a JSON serialized object
+            </summary>
+            <returns>JSON serialized object</returns>
+        </member>
+        <member name="P:WebExtras.JQFlot.FlotChart.chartOptions">
+            <summary>
+            Flot chart options
+            </summary>
+        </member>
+        <member name="P:WebExtras.JQFlot.FlotChart.chartSeries">
+            <summary>
+            Flot chart series to be plotted
+            </summary>
+        </member>
+        <member name="T:WebExtras.JQFlot.Graphs.BarGraph">
+            <summary>
+            Represents a bar graph
+            </summary>
+        </member>
+        <member name="T:WebExtras.JQFlot.Graphs.BaseGraph">
+            <summary>
+            Represents a base graph
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.Graphs.BaseGraph.show">
+            <summary>
+            Whether to show graph
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.Graphs.BaseGraph.lineWidth">
+            <summary>
+            The width in pixels of the line
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.Graphs.BaseGraph.fill">
+            <summary>
+            Whether the area under the lines should be filled.
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.Graphs.BaseGraph.fillColor">
+            <summary>
+            Fill color. Can be a single CSS color specification or a 
+            <see cref="T:WebExtras.JQFlot.SubOptions.ColorOptions"/> object
+            </summary>
+        </member>
+        <member name="M:WebExtras.JQFlot.Graphs.BaseGraph.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.Graphs.BarGraph.zero">
+            <summary>
+            Specifies whether chart should normally start from zero.
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.Graphs.BarGraph.barWidth">
+            <summary>
+            The width of the bars in the units of the x axis (or y axis if horizontal is set to true)
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.Graphs.BarGraph.align">
+            <summary>
+            Specifies how a bar should be aligned. Can be one of 'left', 'right' or 'center'
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.Graphs.BarGraph.horizontal">
+            <summary>
+            Whether to draw the bars horizontally
+            </summary>
+        </member>
+        <member name="T:WebExtras.JQFlot.Graphs.CurvedLineGraph">
+            <summary>
+            curved line options
+            </summary>
+        </member>
+        <member name="M:WebExtras.JQFlot.Graphs.CurvedLineGraph.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.Graphs.CurvedLineGraph.fit">
+            <summary>
+            whether to fit the series to the available canvas area
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.Graphs.CurvedLineGraph.fitPointDist">
+            <summary>
+            defines the x axis distance of the additional two points
+            that are used to enforce the min max condition
+            </summary>
+        </member>
+        <member name="T:WebExtras.JQFlot.Graphs.DashedLineGraph">
+            <summary>
+            dash options
+            </summary>
+        </member>
+        <member name="M:WebExtras.JQFlot.Graphs.DashedLineGraph.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="P:WebExtras.JQFlot.Graphs.DashedLineGraph.show">
+            <summary>
+            whether dashes are shown
+            </summary>
+        </member>
+        <member name="P:WebExtras.JQFlot.Graphs.DashedLineGraph.lineWidth">
+            <summary>
+            line width
+            </summary>
+        </member>
+        <member name="P:WebExtras.JQFlot.Graphs.DashedLineGraph.dashLength">
+            <summary>
+            length of a dash in pts notation
+            </summary>
+        </member>
+        <member name="T:WebExtras.JQFlot.Graphs.LineGraph">
+            <summary>
+            line options
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.Graphs.LineGraph.zero">
+            <summary>
+            Specifies whether chart should normally start from zero.
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.Graphs.LineGraph.steps">
+            <summary>
+            Whether two adjacent points are connected with a straight line or a 
+            step i.e a horizontal line followed by a vertical line
+            </summary>
+        </member>
+        <member name="T:WebExtras.JQFlot.Graphs.PieGraph">
+            <summary>
+            Represents a Pie graph
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.Graphs.PieGraph.show">
+            <summary>
+            Whether to show graph
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.Graphs.PieGraph.radius">
+            <summary>
+            Radius of the pie. If not set will automatically be adjusted based
+            on the size of the container
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.Graphs.PieGraph.innerRadius">
+            <summary>
+            Radius of the donut hole. If not set, will automatically default to 0.
+            If value is between 0 and 1 it will be used as a percentage of the radius,
+            otherwise if the value is greater than 1, it will be used as direct pixels
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.Graphs.PieGraph.startAngle">
+            <summary>
+            Factor of PI used as a start angle (in radians). Can be between
+            0 and 2 (where 0 and 2 have the same result).
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.Graphs.PieGraph.tilt">
+            <summary>
+            Percentage of tilt ranging from 0 to 1. 1 = fully vertical and
+            0 = fully horizontal in which case nothing gets drawn
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.Graphs.PieGraph.shadow">
+            <summary>
+            Shadow dimension definitions for the graph
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.Graphs.PieGraph.offset">
+            <summary>
+            Offset dimension definitions for the graph
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.Graphs.PieGraph.stroke">
+            <summary>
+            Stroke options for the graph
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.Graphs.PieGraph.label">
+            <summary>
+            Label options for the graph
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.Graphs.PieGraph.combine">
+            <summary>
+            Slice combine options for the graph
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.Graphs.PieGraph.highlight">
+            <summary>
+            Highlighting options for the graph
+            </summary>
+        </member>
+        <member name="T:WebExtras.JQFlot.Graphs.PointGraph">
+            <summary>
+            point options
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.Graphs.PointGraph.radius">
+            <summary>
+            The radius in pixels of the points
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.Graphs.PointGraph.symbol">
+            <summary>
+            Point symbol generator function
+            </summary>
+        </member>
+        <member name="T:WebExtras.JQFlot.SubOptions.ColorGradientOptions">
+            <summary>
+            Represents a Flot color gradient
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.SubOptions.ColorGradientOptions.colors">
+            <summary>
+            An array of CSS color specification to create gradients
+            </summary>
+        </member>
+        <member name="T:WebExtras.JQFlot.SubOptions.ColorOptions">
+            <summary>
+            Represents Flot color options
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.SubOptions.ColorOptions.opacity">
+            <summary>
+            Color opacity
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.SubOptions.ColorOptions.brightness">
+            <summary>
+            Color brightness
+            </summary>
+        </member>
+        <member name="T:WebExtras.JQFlot.SubOptions.CurvedLineOptions">
+            <summary>
+            curved line options
+            </summary>
+        </member>
+        <member name="M:WebExtras.JQFlot.SubOptions.CurvedLineOptions.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.SubOptions.CurvedLineOptions.active">
+            <summary>
+             whether to use the curved lines plugin
+            </summary>
+        </member>
+        <member name="T:WebExtras.JQFlot.SubOptions.AxisOptions">
+            <summary>
+            flot axis options
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.SubOptions.AxisOptions.show">
+            <summary>
+            Flag indicating whether to show axis
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.SubOptions.AxisOptions.position">
+            <summary>
+            Position of the axis on the graph. Can be one of 'bottom', 'top', 'left' or 'right'.
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.SubOptions.AxisOptions.timezone">
+            <summary>
+            Time zone of Flot graph. Setting this only makes sense when using time mode rendering.
+            Can be either 'browser' or a timezone in the format 'UTC+1100'.
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.SubOptions.AxisOptions.color">
+            <summary>
+            Color for the axis. This must be a CSS color specification.
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.SubOptions.AxisOptions.tickColor">
+            <summary>
+            Color for the ticks. This must be a CSS color specification.
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.SubOptions.AxisOptions.font">
+            <summary>
+            Font to the used to render ticks. This must be a CSS font specification.
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.SubOptions.AxisOptions.min">
+            <summary>
+            Axis min value
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.SubOptions.AxisOptions.max">
+            <summary>
+            Axis max value
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.SubOptions.AxisOptions.autoscaleMargin">
+            <summary>
+            The fraction of margin that the scaling algorithm will add to avoid the outermost
+            points ending up on the grid border.
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.SubOptions.AxisOptions.transform">
+            <summary>
+            Transform callback function
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.SubOptions.AxisOptions.inverseTransform">
+            <summary>
+            Inverse transform callback function
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.SubOptions.AxisOptions.ticks">
+            <summary>
+            Can be a number indicating the no. of ticks needed, an array manually specifying
+            all the ticks to be rendered or a <see cref="T:WebExtras.Core.JsFunc"/>.
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.SubOptions.AxisOptions.tickSize">
+            <summary>
+            Tick interval size
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.SubOptions.AxisOptions.minTickSize">
+            <summary>
+            Predominantly used when rendering time series. The format for this array is [2, "month"]
+            where the second value in the array can be 'second', 'minute', 'hour', 'day', 'month'
+            or 'year'
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.SubOptions.AxisOptions.tickFormatter">
+            <summary>
+            Tick formatter
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.SubOptions.AxisOptions.tickDecimals">
+            <summary>
+            Tick decimal places
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.SubOptions.AxisOptions.labelWidth">
+            <summary>
+            Fixed width of tick labels in pixels
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.SubOptions.AxisOptions.labelHeight">
+            <summary>
+            Fixed height of tick labels in pixels
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.SubOptions.AxisOptions.reserveSpace">
+            <summary>
+            Flag indicating whether to reserve space for tick even if the axis is not shown
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.SubOptions.AxisOptions.tickLength">
+            <summary>
+            Length of tick lines in pixels
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.SubOptions.AxisOptions.alignTicksWithAxis">
+            <summary>
+            The number of another axis to align ticks of current axis to. This is useful when you have
+            Y axes on left and right and you want the ticks to line up properly. The trade-off is that
+            the forced ticks won't necessarily be at natural places.
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.SubOptions.AxisOptions.mode">
+            <summary>
+            Specify render mode of the axis. If displaying a time graph this must be set to 'time'.
+            When using time mode the jquery.flot.time.js plugin is needed
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.SubOptions.AxisOptions.timeformat">
+            <summary>
+            Time format for the tick. See <a href="https://github.com/flot/flot/blob/master/API.md"></a>
+            for more information on the various available formats
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.SubOptions.AxisOptions.monthNames">
+            <summary>
+            An array of names of months
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.SubOptions.AxisOptions.dayNames">
+            <summary>
+            An array of names of days
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.SubOptions.AxisOptions.twelveHourClock">
+            <summary>
+            Flag indicating whether we are using a 12 hour nomenclature
+            or a 24 hour nomenclature
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.SubOptions.AxisOptions.axisLabel">
+            <summary>
+            Axis label to be shown
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.SubOptions.AxisOptions.m_axisLabelUseCanvas">
+            <summary>
+            Whether to use Canvas to draw axis label
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.SubOptions.AxisOptions.m_axisLabelUseHtml">
+            <summary>
+            Whether to use HTML to draw axis label
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.SubOptions.AxisOptions.axisLabelFontSizePixels">
+            <summary>
+            Font size in pixels for the axis label. This option is only available if 'axisLabelUseCanvas' 
+            is set to true
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.SubOptions.AxisOptions.axisLabelFontFamily">
+            <summary>
+            Font family for the axis label. This option is only available if 'axisLabelUseCanvas' is
+            set to true
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.SubOptions.AxisOptions.axisLabelColor">
+            <summary>
+            This must be a valid CSS color specification
+            </summary>
+        </member>
+        <member name="M:WebExtras.JQFlot.SubOptions.AxisOptions.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="P:WebExtras.JQFlot.SubOptions.AxisOptions.axisLabelUseCanvas">
+            <summary>
+            Whether to use Canvas to draw axis label
+            </summary>
+        </member>
+        <member name="P:WebExtras.JQFlot.SubOptions.AxisOptions.axisLabelUseHtml">
+            <summary>
+            whether to use HTML to draw axis label
+            </summary>
+        </member>
+        <member name="T:WebExtras.JQFlot.FlotOptions">
+            <summary>
+            flot chart options
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.FlotOptions.xaxis">
+            <summary>
+            X axis 1
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.FlotOptions.yaxis">
+            <summary>
+            Y axis 1
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.FlotOptions.x2axis">
+            <summary>
+            X axis 2
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.FlotOptions.y2axis">
+            <summary>
+            Y axis 2
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.FlotOptions.xaxes">
+            <summary>
+            Multiple X axis definitions
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.FlotOptions.yaxes">
+            <summary>
+            Multiple Y axis definitions
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.FlotOptions.legend">
+            <summary>
+            Legend options
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.FlotOptions.grid">
+            <summary>
+            Chart grid options
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.FlotOptions.series">
+            <summary>
+            Chart series options
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.FlotOptions.colors">
+            <summary>
+            An array of CSS color specifications to choose from when drawing the various series
+            </summary>
+        </member>
+        <member name="M:WebExtras.JQFlot.FlotOptions.ToString">
+            <summary>
+            JSON serializes the current Flot options
+            </summary>
+            <returns>JSON serialized object</returns>
+        </member>
+        <member name="T:WebExtras.JQFlot.FlotSeries">
+            <summary>
+            A class representing the jquery properties of a flot series for any flot charts (http://code.google.com/p/flot/)
+            property names must match the flot property names to allow correct .net to json conversion.
+            see API docs: http://people.iola.dk/olau/flot/API.txt
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.FlotSeries.color">
+            <summary>
+            Color to be used for the series. This can be either a CSS color specification
+            or a number that specifies which auto-generated color to select or a 
+            <see cref="T:WebExtras.JQFlot.SubOptions.ColorGradientOptions"/> object
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.FlotSeries.data">
+            <summary>
+            This must be a 2-dimensional double array for all graphs except pie graph.
+            For pie graphs this must be a single double value.
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.FlotSeries.label">
+            <summary>
+            The label to be used for the legend
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.FlotSeries.lines">
+            <summary>
+            line options
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.FlotSeries.dashes">
+            <summary>
+            dash options
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.FlotSeries.curvedLines">
+            <summary>
+            curved line options
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.FlotSeries.points">
+            <summary>
+            point options
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.FlotSeries.bars">
+            <summary>
+            bar options
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.FlotSeries.xaxis">
+            <summary>
+            which x axis to plot this series against
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.FlotSeries.yaxis">
+            <summary>
+            which y axis to plot this series against
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.FlotSeries.clickable">
+            <summary>
+            whether the series responds to a mouse click
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.FlotSeries.hoverable">
+            <summary>
+            whether the series responds to a mouse hover
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.FlotSeries.shadowSize">
+            <summary>
+            shadow size in pixels of the line or points
+            </summary>
+        </member>
+        <member name="M:WebExtras.JQFlot.FlotSeries.#ctor">
+            <summary>
+            ctor to set defaults
+            </summary>
+        </member>
+        <member name="M:WebExtras.JQFlot.FlotSeries.ToString">
+            <summary>
+            Returns the current Flot series object as a JSON
+            serialized string
+            </summary>
+            <returns>FlotSeries as a JSON serialized string</returns>
+        </member>
+        <member name="T:WebExtras.JQFlot.SubOptions.DimensionOptions">
+            <summary>
+            Represents a dimension
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.SubOptions.DimensionOptions.top">
+            <summary>
+            Top dimension
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.SubOptions.DimensionOptions.bottom">
+            <summary>
+            Bottom dimension
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.SubOptions.DimensionOptions.left">
+            <summary>
+            Left dimension
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.SubOptions.DimensionOptions.right">
+            <summary>
+            Right dimension
+            </summary>
+        </member>
+        <member name="T:WebExtras.JQFlot.SubOptions.ELegendSort">
+            <summary>
+            Legend sorting options
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.SubOptions.ELegendSort.Ascending">
+            <summary>
+            Ascending sort
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.SubOptions.ELegendSort.Descending">
+            <summary>
+            Descending sort
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.SubOptions.ELegendSort.Reverse">
+            <summary>
+            Reverse sort
+            </summary>
+        </member>
+        <member name="T:WebExtras.JQFlot.SubOptions.ELegendSortJsonConverter">
+            <summary>
+            ELegendSort enum's custom Json Converter
+            </summary>
+        </member>
+        <member name="M:WebExtras.JQFlot.SubOptions.ELegendSortJsonConverter.CanConvert(System.Type)">
+            <summary>
+            Determines whether this instance can convert the specified object type
+            </summary>
+            <param name="objectType">Type of the object</param>
+            <returns>true if this instance can convert the specified object type; otherwise, false</returns>
+        </member>
+        <member name="M:WebExtras.JQFlot.SubOptions.ELegendSortJsonConverter.ReadJson(Newtonsoft.Json.JsonReader,System.Type,System.Object,Newtonsoft.Json.JsonSerializer)">
+            <summary>
+            Reads the JSON representation of the object
+            </summary>
+            <param name="reader">The Newtonsoft.Json.JsonReader to read from</param>
+            <param name="objectType">Type of the object</param>
+            <param name="existingValue">The existing value of object being read</param>
+            <param name="serializer">The calling serializer</param>
+            <returns>The object value</returns>
+        </member>
+        <member name="M:WebExtras.JQFlot.SubOptions.ELegendSortJsonConverter.WriteJson(Newtonsoft.Json.JsonWriter,System.Object,Newtonsoft.Json.JsonSerializer)">
+            <summary>
+            Writes the JSON representation of the object
+            </summary>
+            <param name="writer">The Newtonsoft.Json.JsonWriter to write to</param>
+            <param name="value">The Newtonsoft.Json.JsonWriter to write to</param>
+            <param name="serializer">The Newtonsoft.Json.JsonWriter to write to</param>
+        </member>
+        <member name="T:WebExtras.JQFlot.SubOptions.FontOptions">
+            <summary>
+            Represents Flot font options.
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.SubOptions.FontOptions.size">
+            <summary>
+            Font size in pixels
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.SubOptions.FontOptions.lineHeight">
+            <summary>
+            Font line height in pixels
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.SubOptions.FontOptions.style">
+            <summary>
+            Font style. CSS font-style specification.
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.SubOptions.FontOptions.weight">
+            <summary>
+            Font weight. CSS font-weight specification.
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.SubOptions.FontOptions.family">
+            <summary>
+            Font family. CSS font-family specfication.
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.SubOptions.FontOptions.variant">
+            <summary>
+            Font variant. CSS font-variant specification.
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.SubOptions.FontOptions.color">
+            <summary>
+            Font color. CSS color specification.
+            </summary>
+        </member>
+        <member name="T:WebExtras.JQFlot.SubOptions.GridOptions">
+            <summary>
+            flot grid options
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.SubOptions.GridOptions.show">
+            <summary>
+            Whether to show the grid
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.SubOptions.GridOptions.aboveData">
+            <summary>
+            Whether to show grid above the data
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.SubOptions.GridOptions.color">
+            <summary>
+            Grid color. This must be a CSS color specification.
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.SubOptions.GridOptions.backgroundColor">
+            <summary>
+            Grid background color. Can be a single CSS color specification or
+            a <see cref="T:WebExtras.JQFlot.SubOptions.ColorGradientOptions"/> object
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.SubOptions.GridOptions.margin">
+            <summary>
+            Grid margin. Can be a number or a <see cref="T:WebExtras.JQFlot.SubOptions.DimensionOptions"/> object
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.SubOptions.GridOptions.labelMargin">
+            <summary>
+            Grid label margin in pixels
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.SubOptions.GridOptions.axisMargin">
+            <summary>
+            Axis margin in pixels
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.SubOptions.GridOptions.markings">
+            <summary>
+            Markings to be drawn on the grid. This can be a collection of <see cref="T:WebExtras.JQFlot.SubOptions.MarkingOptions"/>
+            or a <see cref="T:WebExtras.Core.JsFunc"/> object
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.SubOptions.GridOptions.borderWidth">
+            <summary>
+            Grid border width. Can be a number or a 
+            <see cref="T:WebExtras.JQFlot.SubOptions.DimensionOptions"/> object
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.SubOptions.GridOptions.borderColor">
+            <summary>
+            Grid border color. All colors must be CSS color specifications. Can be a
+            single color or a <see cref="T:WebExtras.JQFlot.SubOptions.DimensionOptions"/> object
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.SubOptions.GridOptions.minBorderMargin">
+            <summary>
+            Minimum border margin in pixels
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.SubOptions.GridOptions.clickable">
+            <summary>
+            Whether the grid is clickable
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.SubOptions.GridOptions.hoverable">
+            <summary>
+            Whether the grid is hoverable
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.SubOptions.GridOptions.autoHighlight">
+            <summary>
+            Whether to highlight nearby items automatically on plot hover/click.
+            See the 'plothover' and 'plotclick' events for the plot
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.SubOptions.GridOptions.mouseActiveRadius">
+            <summary>
+            Mouse action radius
+            </summary>
+        </member>
+        <member name="T:WebExtras.JQFlot.SubOptions.InteractionOptions">
+            <summary>
+            Represents Flot interaction options
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.SubOptions.InteractionOptions.redrawOverlayInterval">
+            <summary>
+            A numeric FPS value which specified maximum time to delay a redraw of
+            interactive things. Set it to -1 to disable delay.
+            </summary>
+        </member>
+        <member name="T:WebExtras.JQFlot.SubOptions.LegendOptions">
+            <summary>
+            Represents Flot legend options
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.SubOptions.LegendOptions.show">
+            <summary>
+            Flag indicating whether to show legend
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.SubOptions.LegendOptions.labelBoxBorderColor">
+            <summary>
+            Color of the label box border. This must be a CSS color specification
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.SubOptions.LegendOptions.labelFormatter">
+            <summary>
+            Label formatter function
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.SubOptions.LegendOptions.noColumns">
+            <summary>
+            Number of columns per row of the legend's table
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.SubOptions.LegendOptions.position">
+            <summary>
+            Position of the legend. Can be one of 'ne', 'nw', 'se' or 'sw'.
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.SubOptions.LegendOptions.margin">
+            <summary>
+            The margin in pixels or a numeric array with x and y margin in pixels
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.SubOptions.LegendOptions.backgroundColor">
+            <summary>
+            Background color of the legend. This must be a CSS color specification
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.SubOptions.LegendOptions.backgroundOpacity">
+            <summary>
+            Background opacity of the legend. This must be a value between 0 and 1
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.SubOptions.LegendOptions.sorted">
+            <summary>
+            Specify sorting to be applied to the legend objects.
+            null/false, true, "ascending", "descending", "reverse", or a <see cref="T:WebExtras.Core.JsFunc"/> object
+            </summary>
+        </member>
+        <member name="T:WebExtras.JQFlot.SubOptions.MarkingOptions">
+            <summary>
+            Represents a markings object
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.SubOptions.MarkingOptions.xaxis">
+            <summary>
+            X axis markings
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.SubOptions.MarkingOptions.yaxis">
+            <summary>
+            Y Axis markings
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.SubOptions.MarkingOptions.color">
+            <summary>
+            Markings color. This must be a CSS color specificaiton.
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.SubOptions.MarkingOptions.lineWidth">
+            <summary>
+            Markings line width in pixels
+            </summary>
+        </member>
+        <member name="T:WebExtras.JQFlot.SubOptions.MarkingRangeOptions">
+            <summary>
+            Represents a marking range
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.SubOptions.MarkingRangeOptions.from">
+            <summary>
+            Start value for axis
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.SubOptions.MarkingRangeOptions.to">
+            <summary>
+            End value for axis
+            </summary>
+        </member>
+        <member name="T:WebExtras.JQFlot.SubOptions.PieBackgroundOptions">
+            <summary>
+            Represents Pie graph's background options
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.SubOptions.PieBackgroundOptions.color">
+            <summary>
+            Background color of the positioned labels. If null the plugin will 
+            automatically use the color of the slice
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.SubOptions.PieBackgroundOptions.opacity">
+            <summary>
+            Opacity of the background for the positioned labels.
+            Values can be from 0 to 1 where 0 is complete transparent
+            and 1 if completely opaque
+            </summary>
+        </member>
+        <member name="T:WebExtras.JQFlot.SubOptions.PieCombineOptions">
+            <summary>
+            Represents Pie graph's combine options
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.SubOptions.PieCombineOptions.threshold">
+            <summary>
+            Percentage value at which to combine slices. Can
+            be between 0 and 1
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.SubOptions.PieCombineOptions.color">
+            <summary>
+            Color for the combined slices. This must be a 
+            valid CSS color specification. Hexadecimal color
+            specification are recommended. If unset, the plugin
+            will automatically use the color of the first slice
+            to be combined
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.SubOptions.PieCombineOptions.label">
+            <summary>
+            Label for the combined slice
+            </summary>
+        </member>
+        <member name="T:WebExtras.JQFlot.SubOptions.PieHightlightOptions">
+            <summary>
+            Represents Pie graph's hightlight options
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.SubOptions.PieHightlightOptions.opacity">
+            <summary>
+            Opacity of the highlight overlay on top of
+            the current pie close. Can be between 0 and 1.
+            Currently only support white overlay.
+            </summary>
+        </member>
+        <member name="T:WebExtras.JQFlot.SubOptions.PieLabelOptions">
+            <summary>
+            Represents Pie graph's label options
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.SubOptions.PieLabelOptions.show">
+            <summary>
+            Whether to show label. If unset, it will automatically
+            be set to 'false' if legend is enabled, else 'true'
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.SubOptions.PieLabelOptions.radius">
+            <summary>
+            Radius at which to place the labels. If value is between 0
+            and 1 (inclusive) then it will use that as a percentage of
+            the container size, otherwise it will use the value as a 
+            direct pixel length
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.SubOptions.PieLabelOptions.threshold">
+            <summary>
+            Hides the labels of any pie slice that is smaller than the 
+            specified percentage (ranging from 0 to 1). For e.g. a value 
+            of '0.03' will hide any labels with values 3% or less of total
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.SubOptions.PieLabelOptions.formatter">
+            <summary>
+            Label formatter function
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.SubOptions.PieLabelOptions.background">
+            <summary>
+            Pie background color options
+            </summary>
+        </member>
+        <member name="T:WebExtras.JQFlot.SubOptions.PieOffsetOptions">
+            <summary>
+            Represents Pie graph offset options
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.SubOptions.PieOffsetOptions.top">
+            <summary>
+            Vertical offset relative to center of pie
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.SubOptions.PieOffsetOptions.left">
+            <summary>
+            Horizontal offset relative to center of pie
+            </summary>
+        </member>
+        <member name="T:WebExtras.JQFlot.SubOptions.PieShadowOptions">
+            <summary>
+            Represents a pie graph's shadow definition
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.SubOptions.PieShadowOptions.top">
+            <summary>
+            Vertical distance in pixels of the tilted pie shadow
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.SubOptions.PieShadowOptions.left">
+            <summary>
+            Horizontal distance in pixels of the tilted pie shadow
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.SubOptions.PieShadowOptions.alpha">
+            <summary>
+            Alpha value of the tilted pie shadow
+            </summary>
+        </member>
+        <member name="T:WebExtras.JQFlot.SubOptions.PieStrokeOptions">
+            <summary>
+            Represents Pie graph stroke options
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.SubOptions.PieStrokeOptions.color">
+            <summary>
+            Color of the border of each slice.
+            This must be a valid CSS color specificaton.
+            Hexadecimal color definitions are preferred.
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.SubOptions.PieStrokeOptions.width">
+            <summary>
+            Width in pixels of the border of each slice.
+            </summary>
+        </member>
+        <member name="T:WebExtras.JQFlot.SubOptions.SeriesOptions">
+            <summary>
+            Series global options
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.SubOptions.SeriesOptions.lines">
+            <summary>
+            Line options
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.SubOptions.SeriesOptions.points">
+            <summary>
+            Point options
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.SubOptions.SeriesOptions.bars">
+            <summary>
+            Bar options
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.SubOptions.SeriesOptions.curvedLines">
+            <summary>
+            Curved line options
+            </summary>
+        </member>
+        <member name="F:WebExtras.JQFlot.SubOptions.SeriesOptions.pie">
+            <summary>
+            pie options
+            </summary>
+        </member>
+        <member name="T:WebExtras.RssReader">
+            <summary>
+            A generic RSS 2.0 reader
+            </summary>
+        </member>
+        <member name="M:WebExtras.RssReader.#ctor(System.String,System.Collections.Generic.IEnumerable{System.String},System.Int32,System.Boolean)">
+            <summary>
+            Default constructor
+            </summary>
+            <param name="feedChannel">RSS feed channel to read from</param>
+            <param name="rssFields">RSS fields to retrieve data for</param>
+            <param name="rssFeedItemLimit">[Optional] Number of items to read from the RSS feed. Defaults to 5. If set
+            to 0, all RSS items will be read</param>
+            <param name="readFeed">[Optional] Flag indicating whether to read the feed at initialization. Defaults to false</param>
+        </member>
+        <member name="M:WebExtras.RssReader.SetRssData(System.Collections.Generic.List{System.Collections.Generic.Dictionary{System.String,System.String}})">
+            <summary>
+            Sets the RSS Data for the reader. This is typically useful when you need to post process the default
+            RSS data read by the RSS reader
+            </summary>
+            <param name="newData">New data to be set</param>
+        </member>
+        <member name="M:WebExtras.RssReader.ReadRssFeed">
+            <summary>
+            Reads the RSS feed
+            </summary>
+            <returns>True if read was successful, else False</returns>
+        </member>
+        <member name="P:WebExtras.RssReader.RssFeedChannel">
+            <summary>
+            RSS feed channel
+            </summary>
+        </member>
+        <member name="P:WebExtras.RssReader.RssData">
+            <summary>
+            RSS data retrieved.
+            </summary>
+        </member>
+        <member name="P:WebExtras.RssReader.RssFields">
+            <summary>
+            RSS fields to be retrieved
+            </summary>
+        </member>
+        <member name="P:WebExtras.RssReader.RssFeedItemLimit">
+            <summary>
+            Number of RSS feed items to read. If set to 0, all RSS items will be read
+            </summary>
+        </member>
+        <member name="T:WebExtras.Core.StringExtenstions">
+            <summary>
+            String extension functions
+            </summary>
+        </member>
+        <member name="M:WebExtras.Core.StringExtenstions.ToTitleCase(System.String,System.Boolean)">
+            <summary> 
+            Converts a given string to title case
+            </summary>
+            <param name="str">String to be converted to titlecase</param>
+            <param name="allWords">[Optional] Flag indicating whether to title case each 
+            individual word. Defaults to false</param>
+            <returns>Titlecase converted string</returns>
+        </member>
+        <member name="M:WebExtras.Core.StringExtenstions.ContainsIgnoreCase(System.String,System.String)">
+            <summary>
+            Returns a value indicating whether the specified System.String object occurs
+            within this string ignoring case.
+            </summary>
+            <param name="str">String to be checked</param>
+            <param name="value">The string to seek</param>
+            <returns>True if string to be seeked is found in this string, else False</returns>
+        </member>
+        <member name="M:WebExtras.Core.StringExtenstions.Remove(System.String,System.String)">
+            <summary>
+            Removes all occurences of the given string from parent
+            </summary>
+            <param name="str">String parent</param>
+            <param name="removeStr">String to be removed from parent</param>
+            <returns>Sanitised string with given string patterns removed from parent string</returns>
+        </member>
+        <member name="T:WebExtras.Core.StringValueAttribute">
+            <summary>
+            String value attribute which can be applied to Enumerations
+            to resolve to STRING rather than the default INT
+            </summary>
+        </member>
+        <member name="F:WebExtras.Core.StringValueAttribute.m_value">
+            <summary>
+            String value
+            </summary>
+        </member>
+        <member name="M:WebExtras.Core.StringValueAttribute.#ctor(System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="value">Value to be associated with the enum attribute</param>
+        </member>
+        <member name="M:WebExtras.Core.StringValueAttribute.#ctor(System.Type)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="t">Decide the string value based on the given type. The given type MUST
+            implement the <see cref="T:WebExtras.Core.IStringValueDecider"/> interface and have a 
+            default parameterless constructor</param>
+            <exception cref="T:System.InvalidOperationException">Thrown when the given type does not
+            implement WebExtras.Core.IStringValueDecider interface</exception>
+        </member>
+        <member name="P:WebExtras.Core.StringValueAttribute.ValueDeciderType">
+            <summary>
+            Custom string value decider
+            </summary>
+        </member>
+        <member name="P:WebExtras.Core.StringValueAttribute.HasCustomDecider">
+            <summary>
+            Flag indicating whether this attribute has a custom string value
+            decider associated with it
+            </summary>
+        </member>
+        <member name="P:WebExtras.Core.StringValueAttribute.Value">
+            <summary>
+            String value
+            </summary>
+        </member>
+    </members>
+</doc>

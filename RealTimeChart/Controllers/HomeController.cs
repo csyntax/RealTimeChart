@@ -26,5 +26,10 @@ namespace RealTimeChart.Controllers
 
             return View();
         }
+
+        public ActionResult Chart()
+        {
+            return View();
+        }
     }
 }
