@@ -1,0 +1,79 @@
+﻿@{
+    ViewBag.Title = "Home";
+}
+
+<header>
+    <h1> Trade Price: <span id="priceHolder"></span></h1>
+</header>
+
+<div id="placeholder"></div> 
+
+<script>
+    var chartData = $.connection.chartData;
+    var ypt = [];
+    var totalPoints = 30;
+
+    function init() {
+        return chartData.server.initData();
+    }
+
+    chartData.client.updateData = function (data) {
+        update(data);
+    }
+
+    $.connection.hub.start(function () {
+        init();
+    });       
+
+    function initData() {
+        for (var i = 0; i < totalPoints; ++i) {
+            ypt.push(0);
+        }
+                
+        return getPoints();
+    }
+
+    function getData(data) {
+        if (ypt.length > 0) {
+            ypt = ypt.slice(1);
+        }
+
+        ypt.push(data);
+
+        return getPoints();
+    }
+
+    function getPoints() {
+        var ret = [];
+
+        for (var i = 0; i < ypt.length; ++i)
+            ret.push([i, ypt[i]]);
+
+            return ret;
+        }
+
+        var options = {
+            series: {
+                shadowSize: 0, bars: {
+                    show: true,
+                    barWidth: 0.75,
+                    fill: 1
+                }
+            },
+            yaxis: {
+                min: 0,
+                max: 100,
+                tickFormatter: function (val, axis) {
+                    return '$' + val;
+                }
+            },
+            xaxis: { show: false }
+        };
+        var plot = $.plot($("#placeholder"), [initData()], options);
+
+        function update(data) {
+            $('#priceHolder').text('$' + data);
+            plot.setData([getData(data)]);
+            plot.draw();
+        }
+</script>
